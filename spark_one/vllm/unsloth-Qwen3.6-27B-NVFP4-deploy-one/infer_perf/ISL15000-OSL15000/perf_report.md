@@ -32,6 +32,15 @@
 ## 2. Time to First Token (ms) vs 并发数
 
 ```mermaid
+---
+config:
+  xyChart:
+    width: 900
+    height: 600
+  themeVariables:
+    xyChart:
+      plotColorPalette: "#00008B"
+---
 xychart-beta
     title "Time to First Token (ms) vs Concurrency"
     x-axis "Concurrency" [1, 5, 10]
@@ -52,6 +61,15 @@ xychart-beta
 ## 3. Prefill Throughput Per User (tokens/sec/user) vs 并发数
 
 ```mermaid
+---
+config:
+  xyChart:
+    width: 900
+    height: 600
+  themeVariables:
+    xyChart:
+      plotColorPalette: "#00008B"
+---
 xychart-beta
     title "Prefill Throughput Per User (tokens/sec/user) vs Concurrency"
     x-axis "Concurrency" [1, 5, 10]
@@ -72,6 +90,15 @@ xychart-beta
 ## 4. Output Token Throughput Per User (tokens/sec/user) vs 并发数
 
 ```mermaid
+---
+config:
+  xyChart:
+    width: 900
+    height: 600
+  themeVariables:
+    xyChart:
+      plotColorPalette: "#00008B"
+---
 xychart-beta
     title "Output Token Throughput Per User (tokens/sec/user) vs Concurrency"
     x-axis "Concurrency" [1, 5, 10]
@@ -92,6 +119,15 @@ xychart-beta
 ## 5. Request Latency (ms) vs 并发数
 
 ```mermaid
+---
+config:
+  xyChart:
+    width: 900
+    height: 600
+  themeVariables:
+    xyChart:
+      plotColorPalette: "#00008B"
+---
 xychart-beta
     title "Request Latency (ms) vs Concurrency"
     x-axis "Concurrency" [1, 5, 10]
