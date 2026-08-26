@@ -1,0 +1,36 @@
+2026-08-21 10:38:55.736 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-08-21 10:38:55.740 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.6-27B-NVFP4 detected
+2026-08-21 10:38:55.740 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-08-21 10:38:55.742 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-08-21 10:38:57.068 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.6-27B-NVFP4 (1.32s)
+2026-08-21 10:38:57.096 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.4s
+2026-08-21 10:42:48.510 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-08-21 10:42:48.514 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.6-27B-NVFP4 detected
+2026-08-21 10:42:48.514 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-08-21 10:42:48.515 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-08-21 10:42:50.281 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.6-27B-NVFP4 (1.76s)
+2026-08-21 10:42:50.311 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.8s
+2026-08-21 10:47:17.473 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-08-21 10:47:17.477 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.6-27B-NVFP4 detected
+2026-08-21 10:47:17.477 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-08-21 10:47:17.478 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-08-21 10:47:18.835 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.6-27B-NVFP4 (1.35s)
+2026-08-21 10:47:18.866 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.4s
+2026-08-21 11:35:52.283 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-08-21 11:35:52.287 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.6-27B-NVFP4 detected
+2026-08-21 11:35:52.287 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-08-21 11:35:52.288 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-08-21 11:35:53.565 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.6-27B-NVFP4 (1.27s)
+2026-08-21 11:35:53.593 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.3s
+2026-08-21 15:07:51.119 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-08-21 15:07:51.122 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.6-27B-NVFP4 detected
+2026-08-21 15:07:51.123 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-08-21 15:07:51.123 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-08-21 15:07:52.514 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.6-27B-NVFP4 (1.39s)
+2026-08-21 15:07:52.544 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.4s
+2026-08-21 16:12:18.034 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-08-21 16:12:18.037 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.6-27B-NVFP4 detected
+2026-08-21 16:12:18.037 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-08-21 16:12:18.038 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-08-21 16:12:19.347 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.6-27B-NVFP4 (1.30s)
+2026-08-21 16:12:19.378 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.3s
