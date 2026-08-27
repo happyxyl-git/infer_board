@@ -1,0 +1,50 @@
+## Qwen3.6-27B
+./llama-server \
+  -m /data/models/Qwen3.6-27B-Q4_K_M-GGUF/qwen3.6-27b-q4_k_m.gguf \
+  --host 0.0.0.0 \
+  --port 8000 \
+  -ngl 999 \
+  --ctx-size 8192 \
+  --jinja
+
+## Qwen3.6-27B-MTP
+./llama-server \
+    --model /data/models/unsloth/Qwen3.6-27B-MTP-GGUF/Qwen3.6-27B-UD-Q4_K_XL.gguf \
+    --alias "Qwen3.6-27B"
+    --temp 0.7 \
+    --top-p 0.8 \
+    --top-k 20 \
+    --presence-penalty 1.5 \
+    --min-p 0.00 \
+    --spec-type draft-mtp --spec-draft-n-max 2 \
+    --chat-template-kwargs '{"enable_thinking":false}'
+
+## 后台执行
+nohup /data/source_code/llama.cpp-master/build/bin/llama-server \
+    --model /data/models/unsloth/Qwen3.6-27B-MTP-GGUF/Qwen3.6-27B-UD-Q4_K_XL.gguf \
+    --alias "Qwen3.6-27B" \
+    --host 0.0.0.0 \
+    --port 8080 \
+    --temp 0.7 \
+    --top-p 0.8 \
+    --top-k 20 \
+    --presence-penalty 0.5 \
+    --min-p 0.0 \
+    --spec-type draft-mtp \
+    --spec-draft-n-max 2 \
+    --chat-template-kwargs '{"enable_thinking":false}' \
+    > /var/log/llama-server.log 2>&1 &
+
+## 调用
+curl -X POST http://127.0.0.1:8080/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "Qwen3.6-27B",
+    "messages": [
+      {"role": "user", "content": [
+        {"type": "text", "text": "你是谁？"}
+      ]}
+    ],
+    "max_tokens": 512,
+    "stream": false
+  }'
