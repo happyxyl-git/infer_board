@@ -1,0 +1,10 @@
+## 把下面的md文件放在一个文件里
+## ISL1000-OSL1000文件夹是输入长度是1K，输出长度是1K的性能测试结果
+## 在ISL1000-OSL1000/perf_test_results文件夹下有Qwen3.6-27B-openai-chat-concurrency1这样的文件夹，最后1位是并发数。
+- 读取每个文件夹下的profile_export_aiperf.csv文件，从中提取Input Sequence Length (tokens)，Output Sequence Length (tokens)，Time to First Token (ms)，Prefill Throughput Per User (tokens/sec/user)，Output Token Throughput Per User (tokens/sec/user)，Request Latency (ms)Metric的avg值，形成一个表格，每一列的标题为
+concurrency，Input Sequence Length (tokens)，Output Sequence Length (tokens)，Time to First Token (ms)，Prefill Throughput Per User (tokens/sec/user)，Output Token Throughput Per User (tokens/sec/user)，Request Latency (ms)，把相应的Metric的avg值填入表格
+- 生成有折线图的md文件，折线使用深蓝色，横坐标是并发数concurrency，纵坐标是Time to First Token (ms)
+- 生成有折线图的md文件，折线使用深蓝色，横坐标是并发数concurrency，纵坐标是Prefill Throughput Per User (tokens/sec/user)
+- 生成有折线图的md文件，折线使用深蓝色，横坐标是并发数concurrency，纵坐标是Output Token Throughput Per User (tokens/sec/user)
+- 生成有折线图的md文件，折线使用深蓝色，横坐标是并发数concurrency，纵坐标是Request Latency (ms)
+## deployment_infer_service.txt是部署的文档，整理排版后生成md文件
