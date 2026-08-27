@@ -184,6 +184,15 @@ echo "========================================"
 折线颜色：深蓝色（`#00008B`）
 
 ```mermaid
+---
+config:
+  xyChart:
+    width: 900
+    height: 600
+  themeVariables:
+    xyChart:
+      plotColorPalette: "#00008B"
+---
 xychart-beta
     title "Time to First Token (ms) vs Concurrency"
     x-axis "concurrency" [1, 5, 10]
@@ -251,6 +260,15 @@ new Chart(ctx, {
 折线颜色：深蓝色（`#00008B`）
 
 ```mermaid
+---
+config:
+  xyChart:
+    width: 900
+    height: 600
+  themeVariables:
+    xyChart:
+      plotColorPalette: "#00008B"
+---
 xychart-beta
     title "Prefill Throughput Per User (tokens/sec/user) vs Concurrency"
     x-axis "concurrency" [1, 5, 10]
@@ -316,6 +334,15 @@ new Chart(ctx, {
 折线颜色：深蓝色（`#00008B`）
 
 ```mermaid
+---
+config:
+  xyChart:
+    width: 900
+    height: 600
+  themeVariables:
+    xyChart:
+      plotColorPalette: "#00008B"
+---
 xychart-beta
     title "Output Token Throughput Per User (tokens/sec/user) vs Concurrency"
     x-axis "concurrency" [1, 5, 10]
@@ -381,6 +408,15 @@ new Chart(ctx, {
 折线颜色：深蓝色（`#00008B`）
 
 ```mermaid
+---
+config:
+  xyChart:
+    width: 900
+    height: 600
+  themeVariables:
+    xyChart:
+      plotColorPalette: "#00008B"
+---
 xychart-beta
     title "Request Latency (ms) vs Concurrency"
     x-axis "concurrency" [1, 5, 10]
