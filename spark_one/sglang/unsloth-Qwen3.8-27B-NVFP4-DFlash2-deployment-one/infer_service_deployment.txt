@@ -1,0 +1,73 @@
+##
+docker run -it --rm \
+  --gpus all \
+  --shm-size 32g \
+  -p 8002:8000 \
+  -v /data/models/unsloth/Qwen3.8-27B-NVFP4:/model \
+  -v /data/models/incoai/Qwen3.8-27B-DFlash2:/draft-model \
+  lmsysorg/sglang:dev-qwen38-27b-dflash2 \
+  sglang serve \
+    --model-path /model \
+    --served-model-name Qwen3.8-27B \
+    --kv-cache-dtype fp8_e4m3 \
+    --mem-fraction-static 0.80 \
+    --attention-backend flashinfer \
+    --chunked-prefill-size 2048 \
+    --reasoning-parser qwen3 \
+    --tool-call-parser qwen3_coder \
+    --mamba-full-memory-ratio 5.61 \
+    --host 0.0.0.0 \
+    --port 8000 \
+    --speculative-algorithm DFLASH \
+    --speculative-draft-model-path /draft-model \
+    --speculative-num-draft-tokens 8 \
+    --mamba-radix-cache-strategy extra_buffer_lazy \
+    --mamba-ssm-dtype float32
+
+## 10.10.207.51 Qwen3-VL-8B-Instruct实际是Qwen3.8-27B
+docker run -it --rm \
+  --gpus all \
+  --shm-size 32g \
+  -p 8002:8000 \
+  -v /data/models/unsloth/Qwen3.8-27B-NVFP4:/model \
+  -v /data/models/incoai/Qwen3.8-27B-DFlash2:/draft-model \
+  lmsysorg/sglang:dev-qwen38-27b-dflash2 \
+  sglang serve \
+    --model-path /model \
+    --served-model-name Qwen3-VL-8B-Instruct \
+    --kv-cache-dtype fp8_e4m3 \
+    --mem-fraction-static 0.80 \
+    --attention-backend flashinfer \
+    --chunked-prefill-size 2048 \
+    --reasoning-parser qwen3 \
+    --tool-call-parser qwen3_coder \
+    --mamba-full-memory-ratio 5.61 \
+    --host 0.0.0.0 \
+    --port 8000 \
+    --speculative-algorithm DFLASH \
+    --speculative-draft-model-path /draft-model \
+    --speculative-num-draft-tokens 8 \
+    --mamba-radix-cache-strategy extra_buffer_lazy \
+    --mamba-ssm-dtype float32
+
+##18上执行
+docker run -d \
+  --name nginx-proxy \
+  --restart always \
+  -p 8001:8001 \
+  -v ~/nginx-proxy/conf.d:/etc/nginx/conf.d:ro \
+  nginx
+
+##
+curl -X POST http://127.0.0.1:8001/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "/model",
+    "messages": [
+      {"role": "user", "content": [
+        {"type": "text", "text": "你好"}
+      ]}
+    ],
+    "max_tokens": 150,
+    "stream": false
+  }'

@@ -1,0 +1,7 @@
+Concurrency,Time to First Token (ms) avg,Output Token Throughput Per User (tokens/sec/user) avg
+1,536,12.15
+2,741,11.57
+4,1253,11.3
+8,2017,10.7475
+16,10911,5.436875
+32,25245,2.720625

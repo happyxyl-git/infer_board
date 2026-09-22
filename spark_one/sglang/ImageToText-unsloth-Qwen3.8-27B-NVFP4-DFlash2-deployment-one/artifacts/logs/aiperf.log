@@ -1,0 +1,42 @@
+2026-09-18 14:07:14.878 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-09-18 14:07:14.881 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.8-27B-NVFP4 detected
+2026-09-18 14:07:14.881 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-09-18 14:07:14.882 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-09-18 14:07:16.173 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.8-27B-NVFP4 (1.29s)
+2026-09-18 14:07:16.193 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.3s
+2026-09-18 14:07:16.319 - aiperf - WARNING - Using --osl without ignore_eos or min_tokens in --extra-inputs. Output sequence length cannot be guaranteed unless the server honors these parameters. Consider: --extra-inputs ignore_eos:true (generate until max_tokens) or --extra-inputs min_tokens:<value> (set minimum output length).
+2026-09-18 14:09:01.970 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-09-18 14:09:01.973 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.8-27B-NVFP4 detected
+2026-09-18 14:09:01.973 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-09-18 14:09:01.974 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-09-18 14:09:03.307 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.8-27B-NVFP4 (1.33s)
+2026-09-18 14:09:03.330 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.4s
+2026-09-18 14:09:03.450 - aiperf - WARNING - Using --osl without ignore_eos or min_tokens in --extra-inputs. Output sequence length cannot be guaranteed unless the server honors these parameters. Consider: --extra-inputs ignore_eos:true (generate until max_tokens) or --extra-inputs min_tokens:<value> (set minimum output length).
+2026-09-18 14:10:12.264 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-09-18 14:10:12.267 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.8-27B-NVFP4 detected
+2026-09-18 14:10:12.267 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-09-18 14:10:12.268 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-09-18 14:10:13.579 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.8-27B-NVFP4 (1.31s)
+2026-09-18 14:10:13.595 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.3s
+2026-09-18 14:10:13.714 - aiperf - WARNING - Using --osl without ignore_eos or min_tokens in --extra-inputs. Output sequence length cannot be guaranteed unless the server honors these parameters. Consider: --extra-inputs ignore_eos:true (generate until max_tokens) or --extra-inputs min_tokens:<value> (set minimum output length).
+2026-09-18 14:11:04.317 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-09-18 14:11:04.322 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.8-27B-NVFP4 detected
+2026-09-18 14:11:04.322 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-09-18 14:11:04.323 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-09-18 14:11:05.664 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.8-27B-NVFP4 (1.34s)
+2026-09-18 14:11:05.686 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.4s
+2026-09-18 14:11:05.816 - aiperf - WARNING - Using --osl without ignore_eos or min_tokens in --extra-inputs. Output sequence length cannot be guaranteed unless the server honors these parameters. Consider: --extra-inputs ignore_eos:true (generate until max_tokens) or --extra-inputs min_tokens:<value> (set minimum output length).
+2026-09-18 14:11:41.869 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-09-18 14:11:41.872 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.8-27B-NVFP4 detected
+2026-09-18 14:11:41.872 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-09-18 14:11:41.872 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-09-18 14:11:43.196 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.8-27B-NVFP4 (1.32s)
+2026-09-18 14:11:43.217 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.3s
+2026-09-18 14:11:43.339 - aiperf - WARNING - Using --osl without ignore_eos or min_tokens in --extra-inputs. Output sequence length cannot be guaranteed unless the server honors these parameters. Consider: --extra-inputs ignore_eos:true (generate until max_tokens) or --extra-inputs min_tokens:<value> (set minimum output length).
+2026-09-18 14:12:21.007 - aiperf.cli_runner._single_run - INFO - Starting AIPerf System
+2026-09-18 14:12:21.010 - aiperf.config.resolution.resolvers - INFO - [OK] Tokenizer /data/models/unsloth/Qwen3.8-27B-NVFP4 detected
+2026-09-18 14:12:21.010 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer validated | 0.0s
+2026-09-18 14:12:21.011 - aiperf.config.resolution.resolvers - INFO - Prefetching 1 tokenizer into HF cache...
+2026-09-18 14:12:22.383 - aiperf.config.resolution.resolvers - INFO -   Cached /data/models/unsloth/Qwen3.8-27B-NVFP4 (1.37s)
+2026-09-18 14:12:22.406 - aiperf.config.resolution.resolvers - INFO - 1 tokenizer cached • 1.4s
+2026-09-18 14:12:22.550 - aiperf - WARNING - Using --osl without ignore_eos or min_tokens in --extra-inputs. Output sequence length cannot be guaranteed unless the server honors these parameters. Consider: --extra-inputs ignore_eos:true (generate until max_tokens) or --extra-inputs min_tokens:<value> (set minimum output length).
