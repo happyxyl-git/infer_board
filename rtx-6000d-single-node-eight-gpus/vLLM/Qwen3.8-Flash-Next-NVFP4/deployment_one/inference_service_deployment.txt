@@ -1,0 +1,37 @@
+启动命令
+启动成功
+
+docker run -it --rm \
+  --gpus all \
+  --shm-size=32g \
+  --network host \
+  -v /data/models/rtx-6kd/nv-community/Qwen3.8-Flash-Next-NVFP4:/model \
+  -e VLLM_USE_RUST_FRONTEND=1 \
+  vllm/vllm-openai:v0.31.0 /model \
+  --served-model-name Qwen3.8-Flash \
+  --gpu-memory-utilization 0.8 \
+  --quantization modelopt \
+  --enable-expert-parallel \
+  --tensor-parallel-size 8 \
+  --speculative-config '{"method":"mtp","num_speculative_tokens":3}' \
+  --kv-cache-dtype fp8 \
+  --attention-config.indexer_kv_dtype fp8 \
+  --no-enable-flashinfer-autotune
+  --enable-auto-tool-choice \
+  --tool-call-parser qwen3_coder \
+  --reasoning-parser qwen3 \
+  --enable-prefix-caching \
+  --enable-prompt-tokens-details
+调用
+curl -X POST http://127.0.0.1:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "Qwen3.8-Flash",
+    "messages": [
+      {"role": "user", "content": [
+        {"type": "text", "text": "你好"}
+      ]}
+    ],
+    "max_tokens": 500,
+    "stream": false
+  }'

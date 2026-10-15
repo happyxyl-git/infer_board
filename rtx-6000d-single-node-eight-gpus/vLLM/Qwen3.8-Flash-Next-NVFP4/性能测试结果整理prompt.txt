@@ -1,0 +1,18 @@
+##
+当前文件夹下，有conc_1_isl_1000_osl_1000.log这种格式的文件，其中的1是并发数，isl_1000中的1000是Input Sequence Length (tokens)，osl_1000中的1000是Output Sequence Length (tokens)
+##
+整理成一个csv表格，具有下面这些列
+concurrency，Input Sequence Length (tokens)，Output Sequence Length (tokens) ，avg Time to First Token (ms) ，p99 Time to First Token (ms) ，avg Inter Token Latency (ms)，p99 Inter Token Latency (ms)，Prefill Throughput Per User (tokens/sec/user)，Output Token Throughput Per User (tokens/sec/user) ，Success Rate
+##
+-concurrency从文件名中取
+-Input Sequence Length (tokens)从文件名中取
+-Output Sequence Length (tokens) 从文件名中取
+-avg Time to First Token (ms) 从文件中NVIDIA AIPerf | LLM Metrics 这段内容中取，Time to First Token (ms) Metric的avg值
+-p99 Time to First Token (ms) 从文件中NVIDIA AIPerf | LLM Metrics 这段内容中取，Time to First Token (ms) Metric的p99值
+-avg Inter Token Latency (ms) 从文件中NVIDIA AIPerf | LLM Metrics 这段内容中取，Inter Token Latency (ms) Metric的avg值
+-p99 Inter Token Latency (ms) 从文件中NVIDIA AIPerf | LLM Metrics 这段内容中取，Inter Token Latency (ms) Metric的p99值
+-Prefill Throughput Per User (tokens/sec/user) 从文件中NVIDIA AIPerf | LLM Metrics: Active 这段内容中取，Active Prefill Throughput Per User (tokens/sec/user) Metric的avg值
+-Output Token Throughput Per User (tokens/sec/user) 从文件中NVIDIA AIPerf | LLM Metrics 这段内容中取，Output Token Throughput Per User (tokens/sec/user) Metric的avg值
+-Prefill Throughput Per User (tokens/sec) 从文件中NVIDIA AIPerf | LLM Metrics: Active 这段内容中取，Active Prefill Throughput Per User (tokens/sec/user) Metric的avg值乘以concurrency
+-Output Token Throughput Per User (tokens/sec) 从文件中NVIDIA AIPerf | LLM Metrics 这段内容中取，Output Token Throughput Per User (tokens/sec/user) Metric的avg值乘以concurrency
+-Success Rate是用100%减去Request Error Rate (%)

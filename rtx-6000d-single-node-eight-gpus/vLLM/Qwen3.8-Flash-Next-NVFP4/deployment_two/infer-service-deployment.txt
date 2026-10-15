@@ -1,0 +1,45 @@
+启动命令
+启动成功，缓存命中率生效
+
+docker run -it --rm \
+  --gpus all \
+  --shm-size=32g \
+  --network host \
+  -v /data/models/rtx-6kd/nv-community/Qwen3.8-Flash-Next-NVFP4:/model \
+  -e VLLM_USE_RUST_FRONTEND=1 \
+  vllm/vllm-openai:v0.31.0 /model \
+  --served-model-name Qwen3.8-Flash \
+  --gpu-memory-utilization 0.8 \
+  --quantization modelopt \
+  --enable-expert-parallel \
+  --tensor-parallel-size 8 \
+  --no-enable-flashinfer-autotune
+  --enable-auto-tool-choice \
+  --tool-call-parser qwen3_coder \
+  --reasoning-parser qwen3 \
+  --enable-prefix-caching \
+  --enable-prompt-tokens-details
+
+调用
+# 第一次（冷缓存，命中应为 0 或字段缺失）
+# 使用一个很长的系统提示词作为共享前缀
+curl http://127.0.0.1:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "Qwen3.8-Flash",
+    "messages": [
+      {"role": "system", "content": "'"$(python3 -c 'print("这是一段很长的系统提示词，"*100)')"'"},
+      {"role": "user", "content": "测试"}
+    ]
+  }'
+# 第二次（应命中缓存，cached_tokens > 0）
+# 使用一个很长的系统提示词作为共享前缀
+curl http://127.0.0.1:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "Qwen3.8-Flash",
+    "messages": [
+      {"role": "system", "content": "'"$(python3 -c 'print("这是一段很长的系统提示词，"*100)')"'"},
+      {"role": "user", "content": "测试"}
+    ]
+  }'

@@ -1,0 +1,110 @@
+#!/bin/bash
+# aiperf_batch_test.sh
+
+set -o pipefail
+
+# ===== 配置区 =====
+MODEL="Qwen3.8-Flash"
+TOKENIZER="/data/models/rtx-6kd/Qwen3.8-Flash-Next"
+ENDPOINT_TYPE="chat"
+URL="http://127.0.0.1:8000"
+OSL=1000
+REQUEST_COUNT=10
+
+# 缓存命中率目标：shared / (shared + isl) >= HIT_RATIO
+HIT_RATIO=0.90
+
+# 输入长度列表 = shared-system-prompt-length + isl
+INPUT_LEN_LIST=(1000 8000 16000 32000 64000 128000)
+CONCURRENCY_LIST=(1 2 4 8)
+
+RESULT_DIR="./aiperf_results_$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$RESULT_DIR"
+SUMMARY_FILE="$RESULT_DIR/summary.csv"
+echo "input_len,shared_prompt,isl,osl,concurrency,hit_ratio,request_count,status,duration_sec,log_file" > "$SUMMARY_FILE"
+
+echo "=========================================="
+echo "aiperf 批量测试"
+echo "目标缓存命中率: ${HIT_RATIO}"
+echo "输入长度列表: ${INPUT_LEN_LIST[*]}"
+echo "结果目录: $RESULT_DIR"
+echo "=========================================="
+
+# 根据输入长度计算 shared 和 isl：
+#   shared = L * r,  isl = L * (1 - r)
+# 用 awk 做浮点计算并向上/向下取整，保证命中率 >= r
+calc_split() {
+    local L=$1
+    awk -v L="$L" -v r="$HIT_RATIO" 'BEGIN {
+        shared = L * r;
+        isl    = L * (1 - r);
+        # shared 向上取整，isl 向下取整，保证 shared/(shared+isl) >= r
+        s = (shared == int(shared)) ? shared : int(shared) + 1;
+        i = int(isl);
+        if (i < 1) i = 1;   # isl 至少为 1
+        printf "%d %d", s, i;
+    }'
+}
+
+for CONCURRENCY in "${CONCURRENCY_LIST[@]}"; do
+    echo ""
+    echo "##########################################"
+    echo "### 并发 = $CONCURRENCY 开始"
+    echo "##########################################"
+
+    for INPUT_LEN in "${INPUT_LEN_LIST[@]}"; do
+        read SHARED_PROMPT ISL <<< "$(calc_split "$INPUT_LEN")"
+        ACTUAL_LEN=$((SHARED_PROMPT + ISL))
+        HIT=$(awk -v s="$SHARED_PROMPT" -v isl="$ISL" 'BEGIN { printf "%.4f", s/(s+isl) }')
+
+        LOG_FILE="$RESULT_DIR/conc_${CONCURRENCY}_inputlen_${INPUT_LEN}_osl_${OSL}.log"
+
+        echo ""
+        echo "------------------------------------------"
+        echo "▶ 并发=$CONCURRENCY  目标输入长度=$INPUT_LEN  OSL=$OSL"
+        echo "   shared-prompt=$SHARED_PROMPT  isl=$ISL  实际输入长度=$ACTUAL_LEN  命中率=$HIT"
+        echo "------------------------------------------"
+
+        START_TIME=$(date +%s)
+
+        aiperf profile \
+            --model "$MODEL" \
+            --tokenizer "$TOKENIZER" \
+            --endpoint-type "$ENDPOINT_TYPE" \
+            --url "$URL" \
+            --shared-system-prompt-length "$SHARED_PROMPT" \
+            --isl "$ISL" \
+            --osl "$OSL" \
+            --streaming \
+            --request-count "$REQUEST_COUNT" \
+            --concurrency "$CONCURRENCY" \
+            > "$LOG_FILE" 2>&1
+
+        EXIT_CODE=$?
+        END_TIME=$(date +%s)
+        DURATION=$((END_TIME - START_TIME))
+
+        if [ $EXIT_CODE -eq 0 ]; then
+            STATUS="OK"
+            echo "✅ 并发=$CONCURRENCY  输入长度=$INPUT_LEN 完成，耗时 ${DURATION}s"
+        else
+            STATUS="FAILED"
+            echo "❌ 并发=$CONCURRENCY  输入长度=$INPUT_LEN 失败 (exit=$EXIT_CODE)，耗时 ${DURATION}s"
+            echo "   日志最后几行："
+            tail -n 5 "$LOG_FILE" | sed 's/^/     /'
+        fi
+
+        echo "${INPUT_LEN},${SHARED_PROMPT},${ISL},${OSL},${CONCURRENCY},${HIT},${REQUEST_COUNT},${STATUS},${DURATION},${LOG_FILE}" >> "$SUMMARY_FILE"
+    done
+
+    echo ""
+    echo "### 并发 = $CONCURRENCY 全部完成"
+done
+
+echo ""
+echo "=========================================="
+echo "全部完成，汇总结果："
+echo "=========================================="
+column -s, -t "$SUMMARY_FILE"
+echo ""
+echo "完整日志目录：$RESULT_DIR"
